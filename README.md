@@ -194,10 +194,6 @@ Does the campus have Wi-Fi?
 
 B.Sc. Artificial Intelligence Student
 
-GitHub: https://github.com/yourusername
-
-LinkedIn: https://linkedin.com/in/yourprofile
-
 ---
 
 # 📄 License
