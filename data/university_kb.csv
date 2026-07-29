@@ -1,0 +1,47 @@
+﻿intent,entity,response
+admission,general,Admissions for the academic year 2026 are open from May 1 to July 31.
+admission,application,Students can apply through the university admission portal by filling out the online application form.
+admission,deadline,"The last date to submit the admission form is July 31, 2026."
+admission,international,International students can apply through the International Admissions Office.
+admission,status,Admissions are currently open for eligible applicants.
+courses,general,"The university offers undergraduate and postgraduate programs in Science, Commerce, Management, and Technology."
+courses,B.Sc AI,"B.Sc. Artificial Intelligence is a 3-year undergraduate program focusing on AI, Machine Learning, Data Science, and NLP."
+courses,BCA,"BCA is a 3-year undergraduate program covering programming, databases, networking, and software development."
+courses,MCA,MCA is a 2-year postgraduate program emphasizing advanced software development and cloud computing.
+courses,Data Science,"The Data Science program covers statistics, machine learning, big data, and visualization."
+eligibility,B.Sc AI,Candidates must have passed Class 12 with Mathematics and at least 50% marks.
+eligibility,BCA,Candidates must have completed Class 12 from a recognized board.
+eligibility,MCA,Candidates must hold a bachelor's degree with Mathematics at 10+2 or graduation level.
+fees,B.Sc AI,"The annual tuition fee for B.Sc. Artificial Intelligence is ₹85,000."
+fees,BCA,"The annual tuition fee for BCA is ₹70,000."
+fees,MCA,"The annual tuition fee for MCA is ₹90,000."
+fees,hostel,"The hostel fee is ₹45,000 per academic year including accommodation."
+fees,payment,"Fees can be paid online through UPI, net banking, debit card, or credit card."
+scholarship,merit,Merit-based scholarships are available for students scoring above 90% in Class 12.
+scholarship,government,Eligible students may also apply for state and central government scholarship schemes.
+scholarship,girls,Special scholarships are available for eligible female students.
+scholarship,sports,Sports scholarships are offered to outstanding athletes.
+hostel,boys,"Separate hostel facilities are available for boys with Wi-Fi, mess, and security."
+hostel,girls,Separate hostel facilities are available for girls with 24×7 security and CCTV surveillance.
+hostel,facilities,"Hostels provide Wi-Fi, laundry, mess, study rooms, and recreation areas."
+hostel,application,Students can apply for hostel accommodation during the admission process.
+placement,statistics,The university maintains an overall placement rate of approximately 90%.
+placement,recruiters,"Top recruiters include TCS, Infosys, Accenture, Wipro, Capgemini, and Cognizant."
+placement,highest,The highest package offered last year was ₹12 LPA.
+placement,average,The average package offered last year was ₹5.5 LPA.
+placement,internship,Internship assistance is provided through the university placement cell.
+documents,admission,"Required documents include Class 10 and 12 marksheets, Aadhaar Card, passport-size photographs, and Transfer Certificate."
+documents,scholarship,Scholarship applicants should submit income and category certificates where applicable.
+documents,identity,A valid government-issued ID proof is required during verification.
+contact,admission,Admission Helpline: +91-9876543210 | Email: admissions@university.edu
+contact,office,The Admission Office is open Monday to Saturday from 9:00 AM to 5:00 PM.
+contact,website,Visit the official university website for the latest announcements and updates.
+facilities,library,"The university library has over 50,000 books along with digital resources and journals."
+facilities,lab,Modern AI and Computer Science laboratories are equipped with high-performance computers.
+facilities,transport,Bus transportation is available from major parts of the city.
+facilities,medical,A medical center with first-aid and emergency support is available on campus.
+facilities,sports,"The campus includes indoor and outdoor sports facilities, a gymnasium, and a fitness center."
+facilities,wifi,Free high-speed Wi-Fi is available across the campus.
+facilities,cafeteria,The campus cafeteria serves hygienic meals and refreshments throughout the day.
+facilities,clubs,"Students can participate in technical, cultural, sports, and entrepreneurship clubs."
+scholarship,general,"The university offers merit-based scholarships, government scholarships, scholarships for eligible female students, and sports scholarships."

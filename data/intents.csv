@@ -1,0 +1,251 @@
+﻿question,intent
+What is the last date for admission?,admission
+When does admission close?,admission
+Admission deadline?,admission
+Are admissions open?,admission
+Can I still apply?,admission
+When do admissions begin?,admission
+How do I apply for admission?,admission
+Where can I apply for admission?,admission
+Is admission open for 2026?,admission
+Can I get direct admission?,admission
+What is the admission process?,admission
+How can I register for admission?,admission
+Is online admission available?,admission
+Can I apply now?,admission
+How do I submit my application?,admission
+Where is the admission portal?,admission
+Can international students apply?,admission
+Can I apply after the deadline?,admission
+What are the admission dates?,admission
+Admission schedule please.,admission
+When is the application deadline?,admission
+How do I start my application?,admission
+Is the admission form available?,admission
+Can I apply offline?,admission
+When will admissions reopen?,admission
+What courses are offered?,courses
+Do you offer B.Sc AI?,courses
+Which undergraduate courses are available?,courses
+Is BCA available?,courses
+What programs does the university provide?,courses
+List all available courses.,courses
+Do you have engineering courses?,courses
+Are postgraduate courses available?,courses
+Which AI courses are available?,courses
+What is the duration of B.Sc AI?,courses
+Do you offer diploma courses?,courses
+Can I study Data Science?,courses
+Is Computer Science available?,courses
+Which departments are there?,courses
+What specializations are available?,courses
+Do you offer online courses?,courses
+Is MCA available?,courses
+What degrees are offered?,courses
+Tell me about B.Sc Artificial Intelligence.,courses
+Can you list all programs?,courses
+Which courses have internships?,courses
+Do you have MBA?,courses
+Is B.Tech offered?,courses
+What new courses are available?,courses
+Which course is best for AI?,courses
+Am I eligible for B.Sc AI?,eligibility
+Who can apply?,eligibility
+What are the eligibility criteria?,eligibility
+Can I apply after Class 12?,eligibility
+Is PCM compulsory?,eligibility
+Can commerce students apply?,eligibility
+Minimum percentage required?,eligibility
+Can diploma students apply?,eligibility
+What marks are required?,eligibility
+Is Mathematics compulsory?,eligibility
+Can arts students apply?,eligibility
+Do I need entrance exams?,eligibility
+Who is eligible for admission?,eligibility
+What qualifications are required?,eligibility
+Eligibility for MCA?,eligibility
+Eligibility for BCA?,eligibility
+Can I apply with 70 percent?,eligibility
+Can I apply after diploma?,eligibility
+Do I need Physics?,eligibility
+What are the admission requirements?,eligibility
+Can CBSE students apply?,eligibility
+Can state board students apply?,eligibility
+Is there an age limit?,eligibility
+Do I need English?,eligibility
+Can foreign students apply?,eligibility
+What is the tuition fee?,fees
+How much are the fees?,fees
+Fee structure?,fees
+Annual fee?,fees
+Semester fee?,fees
+What is the fee for B.Sc AI?,fees
+Hostel fee?,fees
+Library fee?,fees
+Exam fee?,fees
+Any additional charges?,fees
+Can I pay in installments?,fees
+Do you offer fee concessions?,fees
+How much should I pay?,fees
+Is there an admission fee?,fees
+How much is registration?,fees
+Total course fee?,fees
+Is GST included?,fees
+Can fees be paid online?,fees
+How much is the first-year fee?,fees
+Fee details please.,fees
+Is there a late fee?,fees
+Can I pay by card?,fees
+Do you accept UPI?,fees
+What are the payment options?,fees
+Is the fee refundable?,fees
+Do you provide scholarships?,scholarship
+Any scholarships available?,scholarship
+Scholarship details?,scholarship
+Merit scholarship?,scholarship
+Need-based scholarship?,scholarship
+How can I apply for scholarship?,scholarship
+Scholarship eligibility?,scholarship
+Government scholarships?,scholarship
+Private scholarships?,scholarship
+Can I get financial aid?,scholarship
+Who gets scholarships?,scholarship
+Scholarship amount?,scholarship
+Can first-year students apply?,scholarship
+Scholarship application process?,scholarship
+Last date for scholarship?,scholarship
+How much scholarship is available?,scholarship
+Sports scholarship?,scholarship
+Minority scholarship?,scholarship
+Scholarships for girls?,scholarship
+Education loan assistance?,scholarship
+Can I renew my scholarship?,scholarship
+What documents are needed for scholarship?,scholarship
+Are scholarships competitive?,scholarship
+Do toppers get scholarships?,scholarship
+Is there an AI scholarship?,scholarship
+Is hostel available?,hostel
+Hostel facilities?,hostel
+Hostel fee?,hostel
+Girls hostel?,hostel
+Boys hostel?,hostel
+Hostel rooms?,hostel
+Single occupancy?,hostel
+Double sharing?,hostel
+Mess facility?,hostel
+WiFi in hostel?,hostel
+Hostel rules?,hostel
+Can first-year students stay?,hostel
+How to apply for hostel?,hostel
+Hostel admission process?,hostel
+Laundry facility?,hostel
+Hostel timing?,hostel
+Security in hostel?,hostel
+Distance from campus?,hostel
+Hostel availability?,hostel
+Hostel contact details?,hostel
+Is AC hostel available?,hostel
+Can parents visit the hostel?,hostel
+Are hostels furnished?,hostel
+Can I change my room?,hostel
+Is transport available from hostel?,hostel
+Placement statistics?,placement
+Placement percentage?,placement
+Highest package?,placement
+Average package?,placement
+Top recruiters?,placement
+Which companies visit?,placement
+Internship opportunities?,placement
+Placement cell?,placement
+Campus placements?,placement
+Job opportunities?,placement
+Placement record?,placement
+Companies hiring AI students?,placement
+How many students get placed?,placement
+Placement support?,placement
+Industry collaborations?,placement
+Training for placements?,placement
+Placement preparation?,placement
+Career guidance?,placement
+Internship assistance?,placement
+Placement details?,placement
+Do startups recruit?,placement
+Are mock interviews conducted?,placement
+What is the median salary?,placement
+Which companies hired last year?,placement
+Does every student get placement support?,placement
+Which documents are required?,documents
+Admission documents?,documents
+Required certificates?,documents
+Migration certificate needed?,documents
+Transfer certificate required?,documents
+Do I need Aadhaar?,documents
+Passport photo required?,documents
+Marksheet needed?,documents
+Identity proof?,documents
+Income certificate?,documents
+Category certificate?,documents
+Medical certificate?,documents
+How many photos?,documents
+Original documents?,documents
+Photocopies required?,documents
+Document verification?,documents
+Upload documents online?,documents
+Application documents?,documents
+What should I bring?,documents
+List of required documents?,documents
+Do I need a birth certificate?,documents
+Can I upload PDFs?,documents
+Is self-attestation allowed?,documents
+Do I need domicile certificate?,documents
+When are documents verified?,documents
+University contact number?,contact
+Email address?,contact
+Admission office contact?,contact
+Where is the university located?,contact
+Campus address?,contact
+Office timings?,contact
+How can I contact admissions?,contact
+Customer support?,contact
+WhatsApp number?,contact
+Helpline number?,contact
+Website?,contact
+Google Maps location?,contact
+Registrar office?,contact
+Contact details?,contact
+Reception number?,contact
+Who should I contact?,contact
+Counselor details?,contact
+Admission office email?,contact
+Campus phone number?,contact
+Support email?,contact
+Can I visit the campus?,contact
+Where is the admissions office?,contact
+Who is the dean?,contact
+What are office hours?,contact
+Emergency contact number?,contact
+Do you have a library?,facilities
+Sports facilities?,facilities
+Gym available?,facilities
+WiFi on campus?,facilities
+Computer labs?,facilities
+AI laboratory?,facilities
+Cafeteria?,facilities
+Medical facilities?,facilities
+Parking available?,facilities
+Transport facility?,facilities
+Bus service?,facilities
+Auditorium?,facilities
+Research labs?,facilities
+Smart classrooms?,facilities
+Student clubs?,facilities
+Events conducted?,facilities
+Campus infrastructure?,facilities
+Innovation center?,facilities
+Incubation center?,facilities
+Campus facilities?,facilities
+Do you have a swimming pool?,facilities
+Is there a study hall?,facilities
+Are there makerspaces?,facilities
+Is campus accessible?,facilities
+Do you have conference halls?,facilities
