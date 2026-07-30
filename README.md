@@ -1,8 +1,28 @@
 # 🎓 CampusAI – Intelligent University Chatbot
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+
+![License](https://img.shields.io/badge/License-MIT-green)
+
 An AI-powered University Chatbot built using **Natural Language Processing (NLP)**. The chatbot understands user queries related to admissions, courses, eligibility, fees, scholarships, hostel, placements, documents, contact information, and campus facilities.
 
 The system uses **text preprocessing**, **TF-IDF feature extraction**, **Logistic Regression for intent classification**, **rule-based Named Entity Recognition (NER)**, and a **knowledge base retrieval system** to provide accurate responses through an interactive **Streamlit** web application.
+
+# 🚀 Project Highlights
+
+- Developed an end-to-end NLP chatbot for university information.
+- Achieved 72% intent classification accuracy using Logistic Regression and TF-IDF.
+- Implemented rule-based Named Entity Recognition for entity extraction.
+- Built an interactive Streamlit web application.
+- Deployed the chatbot online using Streamlit Community Cloud.
+
+# 🌐 Live Demo
+
+Try the chatbot here:
+
+https://campusai-nlp-chatbot-v1.streamlit.app/
 
 ---
 
@@ -59,25 +79,22 @@ Response Generation
 # 📂 Project Structure
 
 ```
-CampusAI/
+CampusAI-NLP-Chatbot/
 │
 ├── app.py
 ├── chatbot.py
 ├── preprocess.py
 ├── ner.py
 ├── train_model.py
+├── evaluate_model.py
 ├── requirements.txt
+├── README.md
+├── LICENSE
 │
 ├── data/
-│   ├── intents.csv
-│   └── university_kb.csv
-│
 ├── models/
-│   ├── intent_classifier.pkl
-│   ├── tfidf_vectorizer.pkl
-│   └── label_encoder.pkl
-│
-└── README.md
+├── evaluation/
+└── screenshots/
 ```
 
 ---
@@ -87,7 +104,7 @@ CampusAI/
 | Category | Technology |
 |----------|------------|
 | Programming Language | Python |
-| NLP | NLTK |
+| NLP | NLTK + spaCy |
 | Machine Learning | Scikit-learn |
 | Vectorization | TF-IDF |
 | Classifier | Logistic Regression |
@@ -102,13 +119,13 @@ CampusAI/
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/CampusAI.git
+git clone https://github.com/ShriyaP1966/CampusAI-NLP-Chatbot.git
 ```
 
 Move into the project
 
 ```bash
-cd CampusAI
+cd CampusAI-NLP-Chatbot
 ```
 
 Install dependencies
@@ -136,20 +153,10 @@ Current model performance on the intent classification dataset:
 | Recall | 0.72 |
 | F1 Score | 0.71 |
 
+The intent classification model was trained on a dataset containing 250 manually labeled queries across 10 university-related intents.
+
 > Performance is expected to improve with a larger training dataset and advanced embedding models.
 
----
-
-# 📸 Screenshots
-
-Add screenshots here after completing the UI.
-
-Example:
-
-- Home Screen
-- Chat Interface
-- Sample Conversation
-- NLP Details Panel
 
 ---
 
@@ -177,14 +184,12 @@ Does the campus have Wi-Fi?
 
 # 🔮 Future Improvements
 
-- Replace TF-IDF with Sentence Transformers
-- Fine-tune BERT for intent classification
-- Replace rule-based NER with spaCy or a trained NER model
-- Add conversation context for multi-turn dialogue
-- Support multilingual queries
-- Deploy using Streamlit Community Cloud
-- Integrate Retrieval-Augmented Generation (RAG)
-- Add voice-based interaction
+- Integrate Large Language Models (LLMs)
+- Improve intent classification with transformer embeddings
+- Fine-tune a custom Named Entity Recognition model
+- Add Retrieval-Augmented Generation (RAG)
+- Enable voice interaction
+- Support multilingual conversations
 
 ---
 
