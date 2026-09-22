@@ -1,8 +1,8 @@
-streamlit
-pandas
-numpy
-scikit-learn
-nltk
-joblib
-spacy
+streamlit==1.64.0
+pandas==3.0.6
+numpy==2.5.3
+scikit-learn==1.8.0
+nltk==3.10.3
+joblib==1.6.0
+spacy==3.8.16
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl

@@ -1,10 +1,6 @@
-import random
-import joblib
-import pandas as pd
 import streamlit as st
 
-from preprocess import preprocess_text
-from ner import extract_entity
+from engine import predict_intent, get_response, load_engine, EngineLoadError
 
 # -----------------------
 # Page Configuration
@@ -17,117 +13,14 @@ st.set_page_config(
 )
 
 # -----------------------
-# Load Models
+# Load Engine
 # -----------------------
 
-classifier = joblib.load("models/intent_classifier.pkl")
-vectorizer = joblib.load("models/tfidf_vectorizer.pkl")
-label_encoder = joblib.load("models/label_encoder.pkl")
-
-# -----------------------
-# Load Knowledge Base
-# -----------------------
-
-kb = pd.read_csv("data/university_kb.csv")
-kb.columns = kb.columns.str.lower()
-
-# -----------------------
-# Predict Intent
-# -----------------------
-def predict_intent(query):
-
-    if not query:
-        return None, 0.0
-
-    query_lower = query.lower()
-
-def predict_intent(query):
-
-    query_lower = query.lower()
-
-    # -------------------------
-    # Rule-based Intent Detection
-    # -------------------------
-
-    if any(word in query_lower for word in ["eligibility", "eligible", "qualification", "criteria"]):
-        return "eligibility", 1.0
-
-    elif any(word in query_lower for word in ["fee", "fees", "tuition", "payment"]):
-        return "fees", 1.0
-
-    elif any(word in query_lower for word in ["scholarship", "scholarships"]):
-        return "scholarship", 1.0
-
-    elif any(word in query_lower for word in ["hostel", "mess", "laundry"]):
-        return "hostel", 1.0
-
-    elif any(word in query_lower for word in ["placement", "placements", "recruiter", "recruiters", "package", "internship"]):
-        return "placement", 1.0
-
-    elif any(word in query_lower for word in ["document", "documents", "certificate", "aadhaar"]):
-        return "documents", 1.0
-
-    elif any(word in query_lower for word in ["admission", "apply", "application", "deadline"]):
-        return "admission", 1.0
-
-    elif any(word in query_lower for word in ["course", "courses", "program", "programs", "offer", "offered"]):
-        return "courses", 1.0
-    
-    elif any(word in query_lower for word in ["contact", "office", "website", "email", "phone"]):
-        return "contact", 1.0
-
-    elif any(word in query_lower for word in ["library", "lab", "wifi", "transport", "cafeteria", "sports"]):
-        return "facilities", 1.0
-
-    # -------------------------
-    # ML Model
-    # -------------------------
-
-    processed = preprocess_text(query)
-
-    vector = vectorizer.transform([processed])
-
-    prediction = classifier.predict(vector)
-
-    intent = label_encoder.inverse_transform(prediction)[0]
-
-    confidence = classifier.predict_proba(vector).max()
-
-    return intent, confidence
-# -----------------------
-# Retrieve Response
-# -----------------------
-
-def get_response(intent, query):
-
-    entity = extract_entity(query)
-
-    response = kb[
-        (kb["intent"] == intent) &
-        (kb["entity"].str.lower() == entity.lower())
-    ]
-
-    if not response.empty:
-        return response.iloc[0]["response"], entity
-
-    response = kb[
-        (kb["intent"] == intent) &
-        (kb["entity"].str.lower() == "general")
-    ]
-
-    if not response.empty:
-        return response.iloc[0]["response"], entity
-
-    response = kb[kb["intent"] == intent]
-
-    if not response.empty:
-        return random.choice(response["response"].tolist()), entity
-
-    return "Sorry, I couldn't understand your question.", entity
-
-# -----------------------
-# UI
-# -----------------------
+try:
+    load_engine()
+except EngineLoadError as exc:
+    st.error(f"CampusAI couldn't start: {exc}")
+    st.stop()
 
 # -----------------------
 # UI
@@ -217,7 +110,7 @@ if prompt:
     intent, confidence = predict_intent(prompt)
 
     # Check confidence
-    if confidence < 0.40:
+    if intent is None or confidence < 0.40:
 
         response = (
             "I'm not confident enough to answer that question.\n\n"

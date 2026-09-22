@@ -1,99 +1,23 @@
-import random
-import joblib
-import pandas as pd
+import sys
 
-from preprocess import preprocess_text
-from ner import extract_entity
+from engine import predict_intent, get_response, load_engine, EngineLoadError
 
-
-# -------------------------
-# Load Trained Models
-# -------------------------
-
-classifier = joblib.load("models/intent_classifier.pkl")
-vectorizer = joblib.load("models/tfidf_vectorizer.pkl")
-label_encoder = joblib.load("models/label_encoder.pkl")
-
-
-# -------------------------
-# Load Knowledge Base
-# -------------------------
-
-kb = pd.read_csv("data/university_kb.csv")
-
-# Make column names lowercase
-kb.columns = kb.columns.str.lower()
-
-
-# -------------------------
-# Predict Intent
-# -------------------------
-
-def predict_intent(query):
-
-    processed = preprocess_text(query)
-
-    vector = vectorizer.transform([processed])
-
-    prediction = classifier.predict(vector)
-
-    intent = label_encoder.inverse_transform(prediction)[0]
-
-    confidence = classifier.predict_proba(vector).max()
-
-    return intent, confidence
-
-
-# -------------------------
-# Retrieve Response
-# -------------------------
-
-def get_response(intent, query):
-
-    entity = extract_entity(query)
-
-    # 1. Exact match
-    response = kb[
-        (kb["intent"] == intent) &
-        (kb["entity"].str.lower() == entity.lower())
-    ]
-
-    if not response.empty:
-        return response.iloc[0]["response"], entity
-
-    # 2. Course-specific fallback
-    course = extract_entity(query)
-
-    if course in ["B.Sc AI", "BCA", "MCA", "Data Science"]:
-
-        response = kb[
-            (kb["intent"] == intent) &
-            (kb["entity"] == course)
-        ]
-
-        if not response.empty:
-            return response.iloc[0]["response"], course
-
-    # 3. General response
-    response = kb[
-        (kb["intent"] == intent) &
-        (kb["entity"].str.lower() == "general")
-    ]
-
-    if not response.empty:
-        return response.iloc[0]["response"], "general"
-
-    # 4. Any response
-    response = kb[kb["intent"] == intent]
-
-    if not response.empty:
-        return random.choice(response["response"].tolist()), entity
-
-    return "Sorry, I couldn't find that information.", entity
+# Windows consoles/pipes default to cp1252, which can't encode the emoji
+# below and crashes the whole CLI with UnicodeEncodeError. Force UTF-8.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except AttributeError:
+    pass
 
 # -------------------------
 # Chat Loop
 # -------------------------
+
+try:
+    load_engine()
+except EngineLoadError as exc:
+    print(f"CampusAI couldn't start: {exc}")
+    sys.exit(1)
 
 print("=" * 50)
 print("🎓 CampusAI - Intelligent University Assistant")
@@ -108,6 +32,10 @@ while True:
         break
 
     intent, confidence = predict_intent(query)
+
+    if intent is None:
+        print("\nBot : Please type a question.")
+        continue
 
     response, entity = get_response(intent, query)
 
