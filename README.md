@@ -26,6 +26,21 @@ https://campusai-nlp-chatbot-v1.streamlit.app/
 
 ---
 
+# 🚧 Project Status
+
+The `main` branch above is the stable **V1** release (also what the live demo runs).
+
+Active modernization work is happening on the [`v2-development`](https://github.com/ShriyaP1966/CampusAI-NLP-Chatbot/tree/v2-development) branch, aimed at making the system genuinely more reliable, modular, and measurable — not just adding features for their own sake. Each phase is verified (tests + a real run of the app) before moving to the next.
+
+**Phase 1 — Fix V1 credibility (done):**
+- The original app had a bug where `app.py` silently ran a bank of hardcoded keyword checks *before* the trained model, bypassing it for most queries and reporting a fake `1.0` confidence. That's fixed — one shared `engine.py` now backs both the Streamlit app and the CLI, and every confidence score is the model's real `predict_proba()` output.
+- Removed dead/duplicate code, added error handling for missing model or knowledge-base files, fixed a Windows console encoding crash in the CLI, pinned all dependencies to verified working versions.
+- Verified: retraining reproduces the committed baseline exactly (Accuracy 0.72), and both entry points were smoke-tested end-to-end.
+
+Planned next: a proper package structure, an automated test suite, a larger dataset, and a measured comparison against semantic (embedding-based) retrieval — see the `v2-development` branch for progress.
+
+---
+
 ## ✨ Features
 
 - 🎯 Intent Classification using Logistic Regression
@@ -81,8 +96,9 @@ Response Generation
 ```
 CampusAI-NLP-Chatbot/
 │
-├── app.py
-├── chatbot.py
+├── app.py       # Streamlit UI
+├── chatbot.py   # CLI entry point
+├── engine.py    # Canonical intent classification + KB retrieval (v2-development)
 ├── preprocess.py
 ├── ner.py
 ├── train_model.py
@@ -96,6 +112,8 @@ CampusAI-NLP-Chatbot/
 ├── evaluation/
 └── screenshots/
 ```
+
+`engine.py` exists on the `v2-development` branch (see Project Status above); `main` still has the pre-Phase-1 structure.
 
 ---
 
