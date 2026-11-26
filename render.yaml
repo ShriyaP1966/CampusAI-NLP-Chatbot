@@ -1,0 +1,22 @@
+# Render Blueprint for the CampusAI backend (FastAPI).
+# Create it from the Render dashboard: New > Blueprint > pick this repository.
+services:
+  - type: web
+    name: campusai-api
+    runtime: python
+    plan: free
+    region: singapore
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn campusai.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      # The URL of the deployed frontend, for example https://your-app.vercel.app
+      # Set it in the Render dashboard: only this origin may call the API.
+      - key: CORS_ORIGINS
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "30"
