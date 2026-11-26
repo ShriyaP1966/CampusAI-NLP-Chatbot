@@ -22,7 +22,6 @@ env/
 # Log files
 *.log
 # Local tooling
-.claude/
 .pytest_cache/
 .ruff_cache/
 .coverage
