@@ -69,6 +69,14 @@ class CampusAI:
         directory = directory or os.environ.get("CAMPUSAI_DOCS_DIR") or DEFAULT_DOCS_DIR
         return cls(load_chunks(directory))
 
+    @property
+    def section_count(self) -> int:
+        return self.retriever.size
+
+    @property
+    def languages(self) -> list[str]:
+        return self.retriever.languages
+
     def ask(self, question: str, lang: str = "en") -> Answer:
         question = (question or "").strip()
         if not question:

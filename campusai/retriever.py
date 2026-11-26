@@ -37,6 +37,10 @@ class Retriever:
             self._index[lang] = BM25(tokens)
 
     @property
+    def size(self) -> int:
+        return sum(len(items) for items in self._chunks.values())
+
+    @property
     def languages(self) -> list[str]:
         return sorted(self._chunks)
 
