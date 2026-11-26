@@ -85,3 +85,19 @@ def test_settings_from_env(monkeypatch):
     settings = Settings.from_env()
     assert settings.cors_origins == ["https://a.example", "https://b.example"]
     assert settings.rate_limit_per_minute == 5
+
+
+def test_chat_detects_hindi_and_marathi_automatically(client):
+    hindi = client.post("/chat", json={"message": "बीसीए की फीस कितनी है?"}).json()
+    assert (hindi["language"], hindi["sources"][0]["id"]) == ("hi", "fees#tuition")
+    marathi = client.post("/chat", json={"message": "वसतिगृहाचे शुल्क किती आहे?"}).json()
+    assert (marathi["language"], marathi["sources"][0]["id"]) == ("mr", "fees#hostel")
+
+
+def test_chat_language_choice_overrides_detection(client):
+    body = client.post("/chat", json={"message": "BCA fee", "language": "mr"}).json()
+    assert body["language"] == "mr"
+
+
+def test_suggestions_in_hindi(client):
+    assert "प्रवेश" in client.get("/suggestions", params={"lang": "hi"}).json()[0]
