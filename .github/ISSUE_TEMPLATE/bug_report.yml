@@ -1,0 +1,33 @@
+name: Bug report
+description: Something gives a wrong answer, fails or looks broken
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The question you asked, the language, and the answer you got.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: If the answer is in the documents, say which section it should come from.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did you see it?
+      options:
+        - Live demo
+        - Running locally
+        - Tests or evaluation script
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Browser, operating system and Python or Node.js versions, if relevant.
