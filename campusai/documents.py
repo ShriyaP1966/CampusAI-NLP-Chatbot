@@ -7,6 +7,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from campusai.safety import looks_like_injection
+
 logger = logging.getLogger(__name__)
 
 SUPPORTED_SUFFIXES = {".md", ".txt"}
@@ -90,6 +92,18 @@ def parse_document(raw: str, path: Path) -> list[Chunk]:
     return chunks
 
 
+def _is_injected(chunk: Chunk) -> bool:
+    """Documents are untrusted input: skip sections that try to instruct the assistant."""
+    if looks_like_injection(f"{chunk.section_title}. {chunk.text}"):
+        logger.warning(
+            "Skipping %s [%s]: it contains instructions aimed at the assistant",
+            chunk.chunk_id,
+            chunk.lang,
+        )
+        return True
+    return False
+
+
 def load_chunks(directory: str | Path) -> list[Chunk]:
     """Load every ``.md`` / ``.txt`` document in ``directory`` (README files are skipped)."""
     root = Path(directory)
@@ -104,7 +118,9 @@ def load_chunks(directory: str | Path) -> list[Chunk]:
             chunks.extend(parse_document(path.read_text(encoding="utf-8"), path))
         except (DocumentError, UnicodeDecodeError) as exc:
             raise DocumentError(f"{path.name}: {exc}") from exc
-    if not chunks:
-        raise DocumentError(f"No documents found in {root}")
+    trusted = [c for c in chunks if not _is_injected(c)]
+    if not trusted:
+        raise DocumentError(f"No usable documents found in {root}")
+    chunks = trusted
     logger.info("Loaded %d sections from %s", len(chunks), root)
     return chunks
