@@ -21,3 +21,19 @@ env/
 
 # Log files
 *.log
+# Local tooling
+.claude/
+.pytest_cache/
+.ruff_cache/
+.coverage
+dist/
+build/
+*.egg-info/
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/.env.local
+.env.*
+!.env.example
+.vercel/
