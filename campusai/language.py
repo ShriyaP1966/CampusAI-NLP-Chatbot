@@ -26,7 +26,7 @@ _MR_WORDS = frozenset(
     """.split()
 )
 # Inflectional endings that attach to Marathi words.
-_MR_SUFFIXES = ("साठी", "च्या", "ाचा", "ाची", "ाचे", "ांचा", "ांची", "ांचे", "ांसाठी", "ाला")
+_MR_SUFFIXES = ("साठी", "च्या", "ाचा", "ाची", "ाचे", "ांचा", "ांची", "ांचे", "ांसाठी", "ाला", "ाकडे", "ांकडे")
 _MR_LETTERS = "ळ"
 
 

@@ -43,6 +43,7 @@ class ChatResponse(BaseModel):
     language: str
     confidence: float
     sources: list[SourceOut]
+    reason: str | None = None
 
 
 class HealthResponse(BaseModel):
@@ -58,6 +59,7 @@ def _to_response(answer: Answer) -> ChatResponse:
         status=answer.status,
         language=answer.lang,
         confidence=answer.confidence,
+        reason=answer.reason,
         sources=[
             SourceOut(id=s.chunk_id, document=s.title, section=s.section_title, text=s.text)
             for s in answer.sources

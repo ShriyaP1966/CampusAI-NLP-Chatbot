@@ -10,12 +10,20 @@ from campusai import messages
 from campusai.documents import Chunk, load_chunks
 from campusai.language import detect_language
 from campusai.retriever import Retriever
+from campusai.safety import HARMFUL, INJECTION, SELF_HARM, check_message
 from campusai.text import split_sentences, tokenize
 
 DEFAULT_DOCS_DIR = Path(__file__).resolve().parent.parent / "data" / "documents"
 MAX_SOURCES = 3
 # Extra sources must score at least this fraction of the best hit.
 RELATED_SCORE_RATIO = 0.8
+
+
+_REFUSALS = {
+    INJECTION: messages.REFUSED_INJECTION,
+    HARMFUL: messages.REFUSED_HARMFUL,
+    SELF_HARM: messages.SELF_HARM_SUPPORT,
+}
 
 
 @dataclass(frozen=True)
@@ -48,10 +56,11 @@ class Answer:
     """The result of asking a question."""
 
     text: str
-    status: str  # "answered" or "not_found"
+    status: str  # "answered", "not_found" or "refused"
     lang: str = "en"
     confidence: float = 0.0
     sources: list[Source] = field(default_factory=list)
+    reason: str | None = None  # why a request was refused: injection, harmful or self_harm
 
     @property
     def found(self) -> bool:
@@ -84,6 +93,10 @@ class CampusAI:
         lang = lang or detect_language(question)
         if not question:
             return Answer(messages.get(messages.EMPTY_QUESTION, lang), "not_found", lang)
+
+        category = check_message(question)
+        if category:
+            return Answer(messages.get(_REFUSALS[category], lang), "refused", lang, reason=category)
 
         hits = self.retriever.search(question, lang, k=MAX_SOURCES)
         if not hits or not self.retriever.is_confident(hits[0]):
