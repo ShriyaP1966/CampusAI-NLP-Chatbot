@@ -9,8 +9,10 @@ from campusai.documents import Chunk
 from campusai.text import tokenize
 
 # A hit must match at least this share of the (idf-weighted) question terms
-# to be trusted. Chosen on the development split of the evaluation set.
-DEFAULT_MIN_COVERAGE = 0.5
+# to be trusted. Hindi and Marathi terms are character trigrams, so partial
+# word matches count and the bar is lower. These values are chosen on the
+# development split of the evaluation set.
+DEFAULT_MIN_COVERAGE = {"en": 0.5, "hi": 0.3, "mr": 0.3}
 
 
 @dataclass(frozen=True)
@@ -23,8 +25,12 @@ class Hit:
 class Retriever:
     """Ranks document sections for a question, one BM25 index per language."""
 
-    def __init__(self, chunks: list[Chunk], min_coverage: float = DEFAULT_MIN_COVERAGE):
-        self.min_coverage = min_coverage
+    def __init__(self, chunks: list[Chunk], min_coverage: float | None = None):
+        self.min_coverage = (
+            {lang: min_coverage for lang in DEFAULT_MIN_COVERAGE}
+            if min_coverage is not None
+            else dict(DEFAULT_MIN_COVERAGE)
+        )
         self._chunks: dict[str, list[Chunk]] = {}
         for chunk in chunks:
             self._chunks.setdefault(chunk.lang, []).append(chunk)
@@ -64,4 +70,4 @@ class Retriever:
         return ranked[:k]
 
     def is_confident(self, hit: Hit) -> bool:
-        return hit.coverage >= self.min_coverage
+        return hit.coverage >= self.min_coverage.get(hit.chunk.lang, 0.5)

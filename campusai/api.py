@@ -116,7 +116,7 @@ def create_app(settings: Settings | None = None, bot: CampusAI | None = None) ->
             return JSONResponse(
                 {"detail": f"Message is too long (limit {limit} characters)."}, status_code=422
             )
-        lang = "en" if payload.language == "auto" else payload.language
+        lang = None if payload.language == "auto" else payload.language
         engine: CampusAI = request.app.state.bot
         return _to_response(engine.ask(payload.message, lang))
 

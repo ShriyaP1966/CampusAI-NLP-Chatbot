@@ -8,6 +8,7 @@ from pathlib import Path
 
 from campusai import messages
 from campusai.documents import Chunk, load_chunks
+from campusai.language import detect_language
 from campusai.retriever import Retriever
 from campusai.text import split_sentences, tokenize
 
@@ -77,8 +78,10 @@ class CampusAI:
     def languages(self) -> list[str]:
         return self.retriever.languages
 
-    def ask(self, question: str, lang: str = "en") -> Answer:
+    def ask(self, question: str, lang: str | None = None) -> Answer:
+        """Answer ``question``. When ``lang`` is None the language is detected."""
         question = (question or "").strip()
+        lang = lang or detect_language(question)
         if not question:
             return Answer(messages.get(messages.EMPTY_QUESTION, lang), "not_found", lang)
 
